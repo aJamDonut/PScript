@@ -172,7 +172,7 @@ nav a:hover {
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 22480px) {
 
 /* ====================
     INTERMEDIATE: Menu
@@ -207,7 +207,7 @@ nav a:hover {
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 22768px) {
 
 /* ====================
     WIDE: CSS3 Effects
@@ -374,19 +374,61 @@ nav a:hover {
 
 /* My Components */
 
+label {
+ width: 100%;
+ display: block;
+}
+
+input[type=text] {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    height: 30px;
+    width: 100%;
+    background-color: white;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f4f4f4+45,ffffff+100 */
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(244,244,244,1) 45%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(244,244,244,1) 45%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(244,244,244,1) 45%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+
+}
+
+textarea {
+ width: 100%;
+ border: 1px solid #cccccc;
+ border-radius: 5px;
+ min-height: 200px;
+ background-color: white;
+ /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f4f4f4+45,ffffff+100 */
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(244,244,244,1) 45%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(244,244,244,1) 45%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(244,244,244,1) 45%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+
+}
+
 .button-action {
- border: 1px solid red;
- padding: 10px;
- width: 100%; 
+    border: 1px solid #1E2ABD;
+    padding: 10px;
+    width: 100%;
+    background-color: #269EE4;
+    border-radius: 2px;
+    color: white; 
 }
 
 /* Pages */
 #contact-form {
- padding: 10px;   
+ padding: 10px;
+ 
 }
 
 .contact-form {
- border: 1px solid orange;
+ border: 1px solid lightgray;
+ border-radius: 2px;
  padding: 10px;
  margin-bottom: 10px;
+ background-color: #cccccc;
+ 
 }

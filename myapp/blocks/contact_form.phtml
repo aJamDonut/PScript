@@ -14,10 +14,21 @@
 <?php else: ?>
 
 <form id='contact' method="post" class='contact-form'>
-	<label for="name">Your name: </label><input type="text" name="name"/>
-	<?php if($errors['name']): ?>
+	<label for="name">Name: </label><input type="text" name="name"/>
+	<?php if(@$errors['name']): ?>
 			<span class='error'><?php echo $errors['name']; ?></span>
 		<?php endif; ?>
+		
+		<label for="email">Email: </label><input type="text" name="email"/>
+	<?php if(@$errors['email']): ?>
+			<span class='error'><?php echo $errors['name']; ?></span>
+		<?php endif; ?>
+		
+		<label for="message">Message: </label><textarea name="message"></textarea>
+	<?php if(@$errors['message']): ?>
+			<span class='error'><?php echo $errors['name']; ?></span>
+		<?php endif; ?>
+		
 </form>
 <button class='button-action' data-post='contact_form' data-target="#contact-form" data-form="#contact" data-transition="fade">Send Message</button>
 
