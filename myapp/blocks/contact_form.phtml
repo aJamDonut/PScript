@@ -20,7 +20,7 @@
 <form id='contact' method="post" class='contact-form'>
 	<label for="name">Your name: </label><input type="text" name="name"/>
 	<?php if($errors['name']): ?>
-			<span class='error'>The name must be provided</span>
+			<span class='error'><?php echo $errors['name']; ?></span>
 		<?php endif; ?>
 </form>
 <button data-post='contact_form' data-target="#main" data-form="#contact" data-transition="fade">Send Message</button>
