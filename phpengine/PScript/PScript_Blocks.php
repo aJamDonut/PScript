@@ -2,8 +2,7 @@
 
 class PScript_Blocks {
 	
-	function get($block) {
-		
+	function get($block, $MyPhp=false) {
 		require("myapp/blocks/{$block}.phtml");
 		
 	}

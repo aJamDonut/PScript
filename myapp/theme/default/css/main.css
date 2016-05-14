@@ -372,11 +372,21 @@ nav a:hover {
     }
 }
 
+/* My Components */
+
+.button-action {
+ border: 1px solid red;
+ padding: 10px;
+ width: 100%; 
+}
 
 /* Pages */
+#contact-form {
+ padding: 10px;   
+}
 
 .contact-form {
  border: 1px solid orange;
  padding: 10px;
- margin: 10px;   
+ margin-bottom: 10px;
 }

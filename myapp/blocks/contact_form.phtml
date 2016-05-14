@@ -1,16 +1,11 @@
-<nav>
-  <ul>
-  	<li>	<a data-do="menu" data-target="#main">Back</a></li>
-  </ul>
-</nav>
 <?php
-	$contact = $PScript->myPhp('contact');
+	$contact = $MyPhp->myPhp('contact');
 	$errors = false;
 	if(isset($_POST['name'])) {
 				$errors = $contact->validate($_POST);
 	}
 ?>
-<div id="contact-form">
+
 
 <?php if($errors === true): ?>
 	
@@ -24,8 +19,6 @@
 			<span class='error'><?php echo $errors['name']; ?></span>
 		<?php endif; ?>
 </form>
-<button data-post='contact_form' data-target="#contact-form" data-form="#contact" data-transition="fade">Send Message</button>
+<button class='button-action' data-post='contact_form' data-target="#contact-form" data-form="#contact" data-transition="fade">Send Message</button>
 
 <?php endif; ?>
-
-</div>
