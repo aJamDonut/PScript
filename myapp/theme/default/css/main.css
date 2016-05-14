@@ -433,3 +433,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
  background-color: #e44d26;
  
 }
+
+.cheat-sheet {
+ padding: 10px;
+    
+}
+
+.cheat-sheet table {
+    border: 1px solid #e44d26;
+    width: 100%;
+}
+
+.cheat-sheet table tr {
+    border-bottom: 1px solid #e44d26;   
+}
+
+.cheat-sheet table td {
+    padding: 5px; 
+}
+
+.cheat-sheet table th {
+    background-color: #e44d26;
+}
+

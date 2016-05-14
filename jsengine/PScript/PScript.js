@@ -31,7 +31,7 @@ var PScript = PScript || {
                 container.fadeIn(); 
             break;
             default:
-                container.slideDown();
+                container.fadeIn();
             break;
         }
         callback();
@@ -60,7 +60,7 @@ PScript.actions = {
         
         if(elem[0].hasAttribute("data-transition")) {
         } else {
-            elem.data('transition','slide'); 
+            elem.data('transition','fade'); 
         }
         PScript.transition(elem, function() {
             self.jQuery(elem.data('target')).html(PScript.UI.loading());
@@ -82,7 +82,7 @@ PScript.actions = {
         
         if(elem[0].hasAttribute("data-transition")) {
         } else {
-            elem.data('transition','slide'); 
+            elem.data('transition','fade'); 
         }
         PScript.transition(elem, function() {
             self.jQuery(elem.data('target')).html(PScript.UI.loading());
