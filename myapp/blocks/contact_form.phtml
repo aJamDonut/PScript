@@ -10,6 +10,7 @@
 				$errors = $contact->validate($_POST);
 	}
 ?>
+<div id="contact-form">
 
 <?php if($errors === true): ?>
 	
@@ -23,6 +24,8 @@
 			<span class='error'><?php echo $errors['name']; ?></span>
 		<?php endif; ?>
 </form>
-<button data-post='contact_form' data-target="#main" data-form="#contact" data-transition="fade">Send Message</button>
+<button data-post='contact_form' data-target="#contact-form" data-form="#contact" data-transition="fade">Send Message</button>
 
 <?php endif; ?>
+
+</div>
