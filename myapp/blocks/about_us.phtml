@@ -1,0 +1,14 @@
+<?php
+
+//PHP CAN GO HERE AND ACCESS THE ENGINE OF THE APP
+
+$myclass = $p->addMyClass('class');
+
+$team = $myclass->getTeam();
+
+?>
+<?php foreach($team as $member): ?>
+	<?php echo $member['name']; ?>
+	<?php endforeach; ?>
+
+<div> About us</div>

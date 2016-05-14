@@ -1,0 +1,17 @@
+The following standards are loosely defined and followed within the project.
+Feel free to adhere to the standard or not.
+Standards are outlined in list format below in the order that puts relevant comments close to eachother.
+The list items are numbered for reference and do not signify importance.
+
+Standards are listed in a numbered list in the coding_standards.txt file
+Non-Object Variables (e.g. int, string) in PHP follow camel case, even if the word is an acronym, e.g. getAllHtml
+Object Variables (e.g. class instances) in PHP follow camel case with the first letter capitalized, e.g. $MyClass
+Variables or script that can or should be changed by a user of PScript should be prefixed with "my"
+Code comments should serve to provide a quick reference for developers once the php documentor source is generated
+Code comments should serve to outline issues with code, if it's ugly - admit it, add a comment to explain it better and add suggestions
+Code comments should serve to speed up a developer picking up the code for the first time
+Ugly code should be replaced when there is free time to replace it
+Ugly code is code than takes a long time to run, is hard to debug or modify or is generally causes disgust in developers
+The core should be able to be editted by someone with novice PHP experience (1-2 years experience with OOP)
+Documentation, guides and comments should be written to tell the reader something useful
+Punctuation and spelling is expected to be gud aslong as it can be understud, if it k7338nt be understood easily, rewrite it
