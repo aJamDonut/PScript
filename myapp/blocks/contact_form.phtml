@@ -3,3 +3,26 @@
   	<li>	<a data-do="menu" data-target="#main">Back</a></li>
   </ul>
 </nav>
+<?php
+	$contact = $PScript->myPhp('contact');
+	$errors = false;
+	if(isset($_POST['name'])) {
+				$errors = $contact->validate($_POST);
+	}
+?>
+
+<?php if($errors === true): ?>
+	
+	<p>Thankyou for getting in touch!</p>
+	
+<?php else: ?>
+
+<form id='contact' method="post" class='contact-form'>
+	<label for="name">Your name: </label><input type="text" name="name"/>
+	<?php if($errors['name']): ?>
+			<span class='error'>The name must be provided</span>
+		<?php endif; ?>
+</form>
+<button data-post='contact_form' data-target="#main" data-form="#contact" data-transition="fade">Send Message</button>
+
+<?php endif; ?>

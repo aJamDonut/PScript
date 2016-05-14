@@ -64,6 +64,11 @@ final class PScript {
 				require("myapp/blocks/{$URI[2]}.phtml");
 			}
 	}
+
+	public function myPhp($name) {
+		require_once("myapp/php/{$name}.php");
+		return New $name();
+	}
 	
 	private static function loadClass($class) {
 		require_once(PSCRIPT_PHP_ENGINE . FS . PSCRIPT_NS. FS . PSCRIPT_NS . '_' . $class . ".php");

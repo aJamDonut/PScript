@@ -46,10 +46,11 @@ PScript.UI = {
     },
     attachListeners: function() {
         $("[data-do]").click(function() {
-
-        PScript.actions.do(this);
-
-    });
+            PScript.actions.do(this);
+        });
+        $("[data-post]").click(function() {
+            PScript.actions.post(this);
+        });
     }
 };
 
@@ -68,6 +69,31 @@ PScript.actions = {
         setTimeout(function() {
         self.jQuery.ajax({
             url : '/in/' + self.jQuery(elem).data('do'),
+            success : function(html) {
+                self.jQuery(self.jQuery(elem).data('target')).html(html);
+                PScript.UI.attachListeners();
+                PScript.endTransition(elem, function(){});
+            }
+        });
+        }, PScript.delay);
+    },
+    post : function(elem) {
+        elem = self.jQuery(elem);
+        
+        if(elem[0].hasAttribute("data-transition")) {
+        } else {
+            elem.data('transition','slide'); 
+        }
+        PScript.transition(elem, function() {
+            self.jQuery(elem.data('target')).html(PScript.UI.loading());
+        });
+        postData = self.jQuery(elem.data('form')).serialize();
+        setTimeout(function() {
+            
+            
+        self.jQuery.post({
+            url : '/in/' + self.jQuery(elem).data('post'),
+            data: postData,
             success : function(html) {
                 self.jQuery(self.jQuery(elem).data('target')).html(html);
                 PScript.UI.attachListeners();
