@@ -69,10 +69,6 @@ body {
     ALL: Orange Theme
    =================== */
 
-.header-container {
-    border-bottom: 20px solid #e44d26;
-}
-
 .footer-container,
 .main aside {
     border-top: 20px solid #e44d26;
@@ -374,6 +370,11 @@ nav a:hover {
 
 /* My Components */
 
+body {
+ background-color: #f16529;
+ color: white;   
+}
+
 label {
  width: 100%;
  display: block;
@@ -429,6 +430,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
  border-radius: 2px;
  padding: 10px;
  margin-bottom: 10px;
- background-color: #cccccc;
+ background-color: #e44d26;
  
 }
