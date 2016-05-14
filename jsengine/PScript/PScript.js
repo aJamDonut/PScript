@@ -1,6 +1,20 @@
 var PScript = PScript || {
-
+    
+    mode: 'online',
+    outputFolder: 'in',
+    ext: '.html',
     delay:1000, /* Delay for checking how it will work in slow environments */
+    
+    init : function() {
+     
+     self.domain = "{PSCRIPTdomain}"; 
+     if(self.domain=="{PSCRIPTdomain}") { /* Didn't come from PScript, must be offline. */
+      self.mode = 'offline';
+      self.outputFolder = "myapp/offline";
+      self.ext = '.html';
+     }
+     PScript.UI.attachListeners();
+    },
     
     transition : function (elem, callback) {
         console.debug("transition");
@@ -68,7 +82,7 @@ PScript.actions = {
         
         setTimeout(function() {
         self.jQuery.ajax({
-            url : '/in/' + self.jQuery(elem).data('do'),
+            url : '/' + self.outputFolder + '/' + self.jQuery(elem).data('do') + PScript.ext,
             success : function(html) {
                 self.jQuery(self.jQuery(elem).data('target')).html(html);
                 PScript.UI.attachListeners();
@@ -92,7 +106,7 @@ PScript.actions = {
             
             
         self.jQuery.post({
-            url : '/in/' + self.jQuery(elem).data('post'),
+            url : '/' + self.outputFolder + '/' + self.jQuery(elem).data('post') + PScript.ext,
             data: postData,
             success : function(html) {
                 self.jQuery(self.jQuery(elem).data('target')).html(html);
@@ -105,7 +119,5 @@ PScript.actions = {
 };
 
 $(document).ready(function() {
-
-    PScript.UI.attachListeners();
-    
+    PScript.init();
 });

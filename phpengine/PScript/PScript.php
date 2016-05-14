@@ -29,6 +29,11 @@ final class PScript {
 			exit;
 		}
 		
+		if(strpos($_SERVER['REQUEST_URI'], ".html")) {
+			echo file_get_contents(PSCRIPT_ROOT . $_SERVER['REQUEST_URI']);
+			exit;
+		}
+		
 
 		self::loadClass('Blocks');
 		
@@ -54,18 +59,27 @@ final class PScript {
 				$PScript_Theme->addToHead("<script type='text/javascript' src='" . PSCRIPT_JS_ENGINE . FS. $namespace . FS . $js . "'></script>");
 			}
 			ob_start();
-			require("myapp/pages/index.phtml");
+			$file = "index";
+			require("myapp/pages/{$file}.phtml");
 			$output = ob_get_contents();
 			ob_end_clean();
 			//This is where we'll output all the generated html
+			ob_start();
 			$PScript_Theme->output($output);
-			} else {
+			$output = ob_get_contents();
+			ob_end_clean();
+			echo $output;
+			file_put_contents("{$file}.html", $output);
+			} elseif ($URI[1]=="in") {
 				
-				
-				
-				
+				ob_start();
+				$file = $URI[2];
 				require("myapp/blocks/{$URI[2]}.phtml");
+				$output = ob_get_contents();
+				ob_end_clean();	
+				echo $output;
 			}
+			file_put_contents("myapp/offline/{$file}.html", $output);
 	}
 
 	public function myPhp($name) {
