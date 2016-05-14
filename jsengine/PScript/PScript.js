@@ -1,32 +1,85 @@
-var PScript = PScript || {};
+var PScript = PScript || {
+
+    delay:1000, /* Delay for checking how it will work in slow environments */
+    
+    transition : function (elem, callback) {
+        console.debug("transition");
+        container = self.jQuery(elem.data("target"));
+        switch(elem.data("transition")) {
+         
+            case "slide" :
+                container.slideUp(400, callback);
+            break;
+            case "fade" :
+                container.fadeOut(400, callback);
+            break; 
+            
+        }
+        
+    },
+    
+    endTransition : function (elem, callback) {
+        console.debug("end transition");
+        console.debug(elem);
+        container = self.jQuery(elem.data("target"));
+        switch(elem.data("transition")) {
+         
+            case "slide" :
+                container.slideDown();
+            break;
+            case "fade" :
+                container.fadeIn(); 
+            break;
+            default:
+                container.slideDown();
+            break;
+        }
+        callback();
+    }
+
+};
 PScript.jQuery = jQuery;
 
 PScript.UI = {
     loading : function() {
      return 'Loading...';   
+    },
+    attachListeners: function() {
+        $("[data-do]").click(function() {
+
+        PScript.actions.do(this);
+
+    });
     }
 };
 
 PScript.actions = {
     do : function(elem) {
-        self.jQuery(self.jQuery(elem).data('target')).html(PScript.UI.loading());
+        elem = self.jQuery(elem);
+        
+        if(elem[0].hasAttribute("data-transition")) {
+        } else {
+            elem.data('transition','slide'); 
+        }
+        PScript.transition(elem, function() {
+            self.jQuery(elem.data('target')).html(PScript.UI.loading());
+        });
+        
         setTimeout(function() {
         self.jQuery.ajax({
             url : '/in/' + self.jQuery(elem).data('do'),
             success : function(html) {
                 self.jQuery(self.jQuery(elem).data('target')).html(html);
+                PScript.UI.attachListeners();
+                PScript.endTransition(elem, function(){});
             }
         });
-        }, 2000);
+        }, PScript.delay);
     }
 };
 
 $(document).ready(function() {
 
-    $("body").append("Engine loads");
-    $("[data-do]").click(function() {
-
-        PScript.actions.do(this);
-
-    });
+    PScript.UI.attachListeners();
+    
 });

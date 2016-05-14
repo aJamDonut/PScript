@@ -37,6 +37,7 @@ final class PScript {
 		if($URI[1]!="in") {
 			//Default themes required for PHP Engine
 			self::loadClass('Theme');
+			self::loadClass('Blocks');
 					
 			//Default JS for PScript
 			$defaultJs = array();
@@ -44,7 +45,7 @@ final class PScript {
 			$defaultJs['jQuery'] = "jquery.js";
 			$defaultJs['PScript'] = "PScript.js";
 			$PScript_Theme = new PScript_Theme();
-			
+			$Blocks = new PScript_Blocks();
 			$PScript_Theme->setTheme($PScript->theme);
 			foreach($defaultJs as $namespace=>$js) {
 				$PScript_Theme->addToHead("<script type='text/javascript' src='" . PSCRIPT_JS_ENGINE . FS. $namespace . FS . $js . "'></script>");
@@ -56,6 +57,10 @@ final class PScript {
 			//This is where we'll output all the generated html
 			$PScript_Theme->output($output);
 			} else {
+				
+				
+				
+				
 				require("myapp/blocks/{$URI[2]}.phtml");
 			}
 	}
