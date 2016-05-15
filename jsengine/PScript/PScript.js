@@ -28,7 +28,7 @@ var PScript = PScript || {
          $('<div>').attr('id','autoload').appendTo($("body"));
          $('#autoload').attr('data-do', path.substr(1));
          $('#autoload').attr('data-target', __PSTARGET);
-        PScript.actions.do($('#autoload'), false);   
+        PScript.actions.do($('#autoload'));   
      }
      
      history.pushState({url : __PSDO, target : __PSTARGET}, null, '/');
