@@ -26,6 +26,15 @@ class PScript_Theme {
 		
 	}
 	
+		public function outputPlugin($plugin, $output) {
+		
+		//Set $Theme to simplify for users
+		$Theme = $this;
+		
+		require("plugins". FS. $plugin . FS ."theme" . FS . $this->theme . FS . "master.phtml");
+		
+	}
+	
 	public function getHead() {
 		global $_CONFIG;
 		$this->headElements[] = <<<EOT

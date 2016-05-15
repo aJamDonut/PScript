@@ -7,6 +7,10 @@ class PScript_Blocks {
 		
 	}
 	
+	function plugin($plugin, $block, $MyPhp=false) {
+		require("plugins/{$plugin}/blocks/{$block}.phtml");
+		
+	}
 	
 }
 

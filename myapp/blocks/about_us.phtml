@@ -1,3 +1,6 @@
+<?php
+	$ServerInfo = $MyPhp->plugin('server_info');
+?>
 <nav>
   <ul>
   	<li>	<a data-do="menu" data-target="#main">Back</a></li>
@@ -16,5 +19,9 @@
     <aside>
         <p>Copyright (c) Adam Dougherty 2016</p>
     </aside>
+    
+    <?php $ServerInfo->phpinfo(); ?>
+    
+    <?php $Blocks->plugin('server_info', 'php_info', $MyPhp); ?>
 
 </div> <!-- #main -->

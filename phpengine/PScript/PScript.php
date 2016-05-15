@@ -54,6 +54,26 @@ EOT;
 
 		self::loadClass('Blocks');
 		
+		self::loadPackage('PHPHooks');
+				//Load plugins
+		global $hooks;
+		
+		$plugins = scandir('plugins/');
+		
+		foreach($plugins as $plugin) {
+			if(strpos($plugin, ".") === false) {
+				//echo $plugin;
+		  require_once("plugins/{$plugin}/init.php");
+			}
+		}
+		
+		
+
+		$hooks->do_action('pscript_init');
+		
+
+		
+		
 		$PScript = new PScript();
 		$MyPhp = $PScript;
 		$Blocks = new PScript_Blocks();
@@ -73,7 +93,7 @@ EOT;
 			
 			$PScript_Theme->setTheme($PScript->theme);
 			foreach($defaultJs as $namespace=>$js) {
-				$PScript_Theme->addToHead("<script type='text/javascript' src='" . PSCRIPT_JS_ENGINE . FS. $namespace . FS . $js . "'></script>");
+				$PScript_Theme->addToHead("<script type='text/javascript' src='/" . PSCRIPT_JS_ENGINE . FS. $namespace . FS . $js . "'></script>");
 			}
 			ob_start();
 			$file = "index";
@@ -87,16 +107,56 @@ EOT;
 			ob_end_clean();
 			echo $output;
 			file_put_contents("{$file}.html", $output);
-			} elseif ($URI[1]=="in") {
+			
+		} elseif ($URI[1]=="in") {
+			if($URI[2]=="plugins") {
+				ob_start();
+				$plugin = $URI[3];
+				$page = $URI[4];
+				require("plugins/{$plugin}/pages/{$page}.phtml");
+				$output = ob_get_contents();
+				ob_end_clean();	
+				echo $output;
+				file_put_contents("plugins/{$plugin}/offline/{$page}.html", $output);
+			} elseif ($URI[2]=="page") {
+				//Default themes required for PHP Engine
+				self::loadClass('Theme');
 				
+						
+				//Default JS for PScript
+				$defaultJs = array();
+				//Namespace = Filename
+				$defaultJs['jQuery'] = "jquery.js";
+				$defaultJs['PScript'] = "PScript.js";
+				$PScript_Theme = new PScript_Theme();
+				
+				$PScript_Theme->setTheme($PScript->theme);
+				foreach($defaultJs as $namespace=>$js) {
+					$PScript_Theme->addToHead("<script type='text/javascript' src='/" . PSCRIPT_JS_ENGINE . FS. $namespace . FS . $js . "'></script>");
+				}
+				ob_start();
+				$plugin = $URI['4'];
+				$file = $URI['5'];
+				require("plugins/{$plugin}/pages/{$file}.phtml");
+				$output = ob_get_contents();
+				ob_end_clean();
+				//This is where we'll output all the generated html
+				ob_start();
+				$PScript_Theme->outputPlugin($plugin, $output);
+				$output = ob_get_contents();
+				ob_end_clean();
+				echo $output;
+				file_put_contents("{$file}.html", $output);
+			} else {
 				ob_start();
 				$file = $URI[2];
 				require("myapp/blocks/{$URI[2]}.phtml");
 				$output = ob_get_contents();
 				ob_end_clean();	
 				echo $output;
+				file_put_contents("myapp/offline/{$file}.html", $output);
 			}
-			file_put_contents("myapp/offline/{$file}.html", $output);
+		}	
 	}
 
 	public function myPhp($name) {
@@ -104,8 +164,17 @@ EOT;
 		return New $name();
 	}
 	
+	public function plugin($name) {
+		require_once("plugins/{$name}/php/{$name}.php");
+		return New $name();
+	}
+	
 	private static function loadClass($class) {
 		require_once(PSCRIPT_PHP_ENGINE . FS . PSCRIPT_NS. FS . PSCRIPT_NS . '_' . $class . ".php");
+	}
+	
+	private static function loadPackage($class) {
+		require_once(PSCRIPT_PHP_ENGINE . FS . $class. FS . $class . ".php");
 	}
 	
 }
