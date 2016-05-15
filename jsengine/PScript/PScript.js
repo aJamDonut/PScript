@@ -1,18 +1,9 @@
 var PScript = PScript || {
     
-    mode: 'online',
-    outputFolder: 'in',
-    ext: '.html',
-    delay:1000, /* Delay for checking how it will work in slow environments */
-    
+    PSCRIPTCONFIG:function(){},
+        
     init : function() {
-     
-     self.domain = "{PSCRIPTdomain}"; 
-     if(self.domain=="{PSCRIPTdomain}") { /* Didn't come from PScript, must be offline. */
-      self.mode = 'offline';
-      self.outputFolder = "myapp/offline";
-      self.ext = '.html';
-     }
+
      PScript.UI.attachListeners();
     },
     
@@ -79,10 +70,12 @@ PScript.actions = {
         PScript.transition(elem, function() {
             self.jQuery(elem.data('target')).html(PScript.UI.loading());
         });
-        
+        requestUrl = '/' + PScript.outputFolder + '/' + self.jQuery(elem).data('do') + PScript.ext;
         setTimeout(function() {
+            
+            console.debug(requestUrl);
         self.jQuery.ajax({
-            url : '/' + self.outputFolder + '/' + self.jQuery(elem).data('do') + PScript.ext,
+            url : requestUrl,
             success : function(html) {
                 self.jQuery(self.jQuery(elem).data('target')).html(html);
                 PScript.UI.attachListeners();
@@ -102,11 +95,14 @@ PScript.actions = {
             self.jQuery(elem.data('target')).html(PScript.UI.loading());
         });
         postData = self.jQuery(elem.data('form')).serialize();
+        console.debug(self);
+        requestUrl = "http://" + remoteURI + '/' + PScript.outputFolder + '/' + self.jQuery(elem).data('post') + PScript.ext;
+        console.debug(requestUrl);
         setTimeout(function() {
             
             
         self.jQuery.post({
-            url : '/' + self.outputFolder + '/' + self.jQuery(elem).data('post') + PScript.ext,
+            url : requestUrl,
             data: postData,
             success : function(html) {
                 self.jQuery(self.jQuery(elem).data('target')).html(html);
@@ -117,7 +113,7 @@ PScript.actions = {
         }, PScript.delay);
     }
 };
-
+var $PS = null;
 $(document).ready(function() {
-    PScript.init();
+   $PS = PScript.init();
 });

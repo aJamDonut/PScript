@@ -44,4 +44,23 @@ delTree("myapp-offline/myapp/blocks");
 delTree("myapp-offline/myapp/pages");
 delTree("myapp-offline/myapp/php");
 
+
+$jsConfig = <<<EOT
+			
+				remoteURI : '{$_CONFIG['remote_url']}',
+    mode: 'offline',
+    outputFolder: 'myapp/offline',
+    ext: '.html',
+    delay:1000, /* Delay for checking how it will work in slow environments */
+    domain : "{$_CONFIG['live_url']}"
+			
+EOT;
+			
+			$js = file_get_contents("myapp-offline/jsengine/PScript/PScript.js");
+			
+			$js = str_replace("PSCRIPTCONFIG:function(){}", $jsConfig, $js);
+			
+			file_put_contents("myapp-offline/jsengine/PScript/PScript.js", $js);
+
+
 ?>

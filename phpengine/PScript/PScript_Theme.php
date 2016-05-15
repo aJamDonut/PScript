@@ -27,6 +27,13 @@ class PScript_Theme {
 	}
 	
 	public function getHead() {
+		global $_CONFIG;
+		$this->headElements[] = <<<EOT
+		<script type="text/javascript">
+			var remoteURI = '{$_CONFIG['remote_url']}';
+		</script>
+EOT;
+		
 		
 		foreach($this->headElements as $element) {
 			echo $element;

@@ -16,7 +16,8 @@ final class PScript {
 	
 	//Start PScript
 	public static function init() {
-		
+		header('Access-Control-Allow-Origin: *'); 
+		global $_CONFIG;
 			//Handle non-php files
 			
 			//var_dump($_SERVER['REQUEST_URI']);
@@ -25,7 +26,23 @@ final class PScript {
 			
 		if(strpos($_SERVER['REQUEST_URI'], ".js") || strpos($_SERVER['REQUEST_URI'], ".css")) {
 			header('Content-Type: text/css');
-			echo file_get_contents(PSCRIPT_ROOT . $_SERVER['REQUEST_URI']);
+			$url = $_SERVER['REQUEST_URI'];
+			if(strpos($url, "?")) {
+				$url = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '?'));
+			}
+			
+			$jsConfig = <<<EOT
+			
+				remoteURI : '127.0.0.1',
+    mode: 'online',
+    outputFolder: 'in',
+    ext: '',
+    delay:1000, /* Delay for checking how it will work in slow environments */
+    domain : ""
+			
+EOT;
+			
+			echo str_replace("PSCRIPTCONFIG:function(){}", $jsConfig, file_get_contents(PSCRIPT_ROOT . $url));
 			exit;
 		}
 		
