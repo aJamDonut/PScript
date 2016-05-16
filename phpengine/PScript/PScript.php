@@ -96,6 +96,10 @@ EOT;
 				$PScript_Theme->addToHead("<script type='text/javascript' src='/" . PSCRIPT_JS_ENGINE . FS. $namespace . FS . $js . "'></script>");
 			}
 			ob_start();
+			$page='menu';
+			if($URI[1]!=="/") {
+					$page = $URI[1];
+			}
 			$file = "index";
 			require("myapp/pages/{$file}.phtml");
 			$output = ob_get_contents();

@@ -1,18 +1,21 @@
 window.onpopstate = function(event) {
          console.debug("pop");
          data = event.state;
-         console.debug(data);
+         console.debug(data.url);
          $("#autoload").remove();
          $('<div>').attr('id','autoload').appendTo($("body"));
          $('#autoload').attr('data-do', data.url);
          $('#autoload').attr('data-target', data.target);
          PScript.UI.attachListeners();
          PScript.actions.do($('#autoload'), false);
-
      };
 var __PSDO = 'menu';
 var __PSTARGET = '#main';
-
+var __PSLOADING = false;
+function PSCRIPT_PUSH(o,n,e) {
+    history.pushState(o, n, e);
+    console.debug("Name: "+e);
+}
 
 var PScript = PScript || {
     
@@ -20,7 +23,7 @@ var PScript = PScript || {
         
     init : function() {
         console.debug("init");
-     
+     PScript.delay = 450;
      
      path = window.location.pathname;
      if(path!="/") {
@@ -28,10 +31,18 @@ var PScript = PScript || {
          $('<div>').attr('id','autoload').appendTo($("body"));
          $('#autoload').attr('data-do', path.substr(1));
          $('#autoload').attr('data-target', __PSTARGET);
-        PScript.actions.do($('#autoload'));   
+         __PSDO = path.substr(1);
+
+        PScript.actions.do($('#autoload'), undefined, function(){console.debug("hideloader"); $("#loader").fadeOut('fast');});
+     } else {
+         console.debug('fadeloadermain');
+        $("#loader").fadeOut('fast');
+        PSCRIPT_PUSH({url : __PSDO, target : __PSTARGET}, null, '/');
+            
+
      }
      
-     history.pushState({url : __PSDO, target : __PSTARGET}, null, '/');
+     
      PScript.UI.attachListeners();
      
      
@@ -78,8 +89,10 @@ var PScript = PScript || {
 PScript.jQuery = jQuery;
 
 PScript.UI = {
-    loading : function() {
-     return 'Loading...';   
+    loading : function(elem) {
+        if(loading==true) {
+            self.jQuery(elem.data('target')).html('Loading...');
+        } 
     },
     attachListeners: function() {
         $("[data-do]").click(function() {
@@ -92,17 +105,21 @@ PScript.UI = {
 };
 
 PScript.actions = {
-    do : function(elem, record) {
+    do : function(elem, record, loader) {
         elem = self.jQuery(elem);
         
         if(elem[0].hasAttribute("data-transition")) {
         } else {
             elem.data('transition','fade'); 
         }
-        PScript.transition(elem, function() {
-            self.jQuery(elem.data('target')).html(PScript.UI.loading());
-        });
-        
+        loading=true;
+        if(loader===undefined) {
+            
+            PScript.transition(elem, function() {
+                PScript.UI.loading(elem);
+                
+            });
+        }
         if(elem.data('target')=='html') {   
             
             requestUrl = '/' + PScript.outputFolder + '/page/' + self.jQuery(elem).data('do') + PScript.ext;
@@ -112,7 +129,7 @@ PScript.actions = {
         }
             console.debug({url : __PSDO, target : __PSTARGET});
             if(record===undefined) {
-                history.pushState({url : __PSDO, target : __PSTARGET}, null, '/'+elem.data('do'));
+                PSCRIPT_PUSH({url : __PSDO, target : __PSTARGET}, null, '/'+elem.data('do'));
             }
             __PSDO = elem.data('do');
             __PSTARGET = elem.data('target');
@@ -122,6 +139,7 @@ PScript.actions = {
         self.jQuery.ajax({
             url : requestUrl,
             success : function(html) {
+                loading=false;
                 if(elem.data('target')=='html') {   
                     var newDoc = document.open("text/html", "replace");
                     newDoc.write(html);
@@ -131,7 +149,11 @@ PScript.actions = {
                 }
                 
                 PScript.UI.attachListeners();
+                
                 PScript.endTransition(elem, function(){});
+                if(loader!==undefined) {
+                   loader();   
+                }
             }
         });
         }, PScript.delay);

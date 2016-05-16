@@ -3,6 +3,7 @@
 class PScript_Blocks {
 	
 	function get($block, $MyPhp=false) {
+		$Blocks = $this;
 		require("myapp/blocks/{$block}.phtml");
 		
 	}

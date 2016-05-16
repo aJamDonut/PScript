@@ -405,6 +405,15 @@ border: none;
 }
 
 /* Pages */
+
+#loader {
+    
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
 #contact-form {
  padding: 10px;
  
@@ -438,4 +447,5 @@ border: none;
 .cheat-sheet table th {
     background-color: #e44d26;
 }
+
 
