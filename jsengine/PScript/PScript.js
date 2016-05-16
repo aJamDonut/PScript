@@ -79,7 +79,7 @@ var PScript = PScript || {
                 container.fadeIn(); 
             break;
             default:
-                container.fadeIn();
+                container.slideDown();
             break;
         }
         callback();
@@ -95,6 +95,8 @@ PScript.UI = {
         } 
     },
     attachListeners: function() {
+        $("[data-do]").off();
+        $("[data-post]").off();
         $("[data-do]").click(function() {
             PScript.actions.do(this);
         });
@@ -110,7 +112,7 @@ PScript.actions = {
         
         if(elem[0].hasAttribute("data-transition")) {
         } else {
-            elem.data('transition','fade'); 
+            elem.data('transition','slide'); 
         }
         loading=true;
         if(loader===undefined) {

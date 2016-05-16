@@ -1,3 +1,9 @@
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Fill in the form below...</h2>
+          
 <?php
 	$contact = $MyPhp->myPhp('contact');
 	$errors = false;
@@ -30,6 +36,10 @@
 		<?php endif; ?>
 		
 </form>
-<button class='button-action' data-post='contact_form' data-target="#contact-form" data-form="#contact" data-transition="fade">Send Message</button>
+<button class='button-action btn btn-default' data-post='contact_form' data-target="#contact-form" data-form="#contact" data-transition="fade">Send Message</button>
 
 <?php endif; ?>
+
+        </div>
+        
+      </div>

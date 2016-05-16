@@ -18,10 +18,13 @@ class PScript_Theme {
 	}
 	
 	public function output($output) {
-		
+		global $_CONFIG;
 		//Set $Theme to simplify for users
 		$Theme = $this;
-		
+		if($this->theme ==false || $this->theme=='') {
+			$this->theme = $_CONFIG['theme'];
+		}
+		$Blocks = new PScript_Blocks();
 		require("myapp" . FS ."theme" . FS . $this->theme . FS . "master.phtml");
 		
 	}

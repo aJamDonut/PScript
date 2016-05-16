@@ -168,7 +168,7 @@ nav a:hover {
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 22480px) {
+@media only screen and (min-width: 480px) {
 
 /* ====================
     INTERMEDIATE: Menu
@@ -203,7 +203,7 @@ nav a:hover {
     }
 }
 
-@media only screen and (min-width: 22768px) {
+@media only screen and (min-width: 768px) {
 
 /* ====================
     WIDE: CSS3 Effects

@@ -5,7 +5,7 @@ if(!$_pScript){echo 'Direct access not allowed';exit;}
 
 $_CONFIG = array();
 
-$_CONFIG['theme']      = "default";
+$_CONFIG['theme']      = "bootstrap";
 $_CONFIG['remote_url'] = "www.bespoketeam.com"; //Offline apps will go here for live requests
 $_CONFIG['live_url']   = "www.bespoketeam.com"; //Online apps will go here for the frontend
 $_CONFIG['pscript_url']= "/";

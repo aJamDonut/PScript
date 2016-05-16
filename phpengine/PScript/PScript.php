@@ -12,7 +12,7 @@
 */
 
 final class PScript {
-	private $theme = "default";
+	private $theme = false;
 	
 	//Start PScript
 	public static function init() {
@@ -94,9 +94,12 @@ EOT;
 			$PScript_Theme->setTheme($PScript->theme);
 			foreach($defaultJs as $namespace=>$js) {
 				$PScript_Theme->addToHead("<script type='text/javascript' src='/" . PSCRIPT_JS_ENGINE . FS. $namespace . FS . $js . "'></script>");
+				
+				
+				
 			}
 			ob_start();
-			$page='menu';
+			$page='about_us';
 			if($URI[0]!=="" && $URI[1] =="") {
 					$page = $URI[1];
 			}
