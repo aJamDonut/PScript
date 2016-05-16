@@ -12,15 +12,16 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script type='text/javascript' src='/jsengine/jQuery/jquery.js'></script><script type='text/javascript' src='/jsengine/PScript/PScript.js'></script>		<script type="text/javascript">
 			var remoteURI = 'www.bespoketeam.com';
-		</script>        <link rel="stylesheet" href="/myapp/theme/bootstrap/css/bootstrap.min.css">
+		</script><link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/myapp/theme/bootstrap/css/bootstrap.min.css">
         <style>
             body {
                 padding-top: 50px;
-                padding-bottom: 20px;
             }
         </style>
         <link rel="stylesheet" href="/myapp/theme/bootstrap/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="/myapp/theme/bootstrap/css/main.css">
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
         <script src="/myapp/theme/bootstrap/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
@@ -42,10 +43,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse navbar-right">
         	<ul style='margin-top: 5px;' class="nav navbar-nav">
-									<li class='main-nav active'><a data-do="about_us" data-target="#main">About Ultimate Cheatsheet</a></li>
-         <li class='main-nav'><a data-do="cheat_php" data-target="#main">PHP</a></li>
-         <li class='main-nav'><a class='main-nav' data-do="get_in_touch" data-target="#main">Get in touch</a></li>
-         <li class='main-nav'><a class='main-nav' data-do="plugins/server_info/overview" data-target="#main">Server Overview</a></li>
+									<li class='main-nav active'><a data-do="get_yummy" data-target="#main">Get Yummy</a></li>
+         <li class='main-nav'><a data-do="examples" data-target="#main">Examples</a></li>
+         <li class='main-nav'><a class='main-nav' data-do="documentation" data-target="#main">Documentation</a></li>
      </ul>
 
         	
@@ -56,31 +56,55 @@
 
  <div class="main-container" id="main">
   <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    <div class="jumbotron ">
+    	<div class="center-block">
+        <h1>Get YummyBerry 0.3</h1>
+        <p>
+								Download the source code from github. </p><p> The code is available free for reuse under the GPL license.
+								</p>
+        
+        <p>
+        	<a class="btn  btn-lg" href="https://github.com/aJamDonut/PScript" target="_blank" role="button">Goto Github</a>
+        	<a class="btn  btn-lg" href="#" role="button">Examples</a>
+        </p>
+<pre class="prettyprint lang-js linenums">
+
+/* Load any piece of code from anywhere in your pages */
+
+&lt;div class='page-content' id='page-content'&gt;
+ &lt;div class='main-container' id='main'&gt;
+  &lt;?php $Blocks-&gt;get('menu', $MyPhp); ?&gt;   
+ &lt;/div&gt;
+ 
+&lt;/div&gt;
+
+/* Load that same piece of code with ajax after an event */
+
+&lt;button data-do='menu' data-target='#main'&gt;Menu&lt;/button&gt;
+
+</pre>
+
+<script type="text/javascript">
+	PR.prettyPrint()
+	
+</script>
       </div>
     </div>
-
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <h2>Fast</h2>
+          <p>Yummy is built with speed in mind. It won't slow you down by making you learn new ways to do things you already do well.</p>
+          <p>Yummy empowers you to choose how simple or complex your application will be.</p>
         </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <h2>Friendly</h2>
+          <p>If you know PHP and can dabble with Javascript you'll love Yummy. It's built with novice developers in mind and simplifies many aspects of setting up a rich internet application.</p>
        </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <h2>Free</h2>
+          <p>The source code is totally free and can be editted and redistributed at your own discretion.</p>
         </div>
       </div>   
  </div> <!-- #main-container -->
@@ -88,17 +112,15 @@
 </div>
     
 
-      <hr>
 
       <footer>
-        <p>&copy; Company 2015</p>
+        <p>&copy; Powered by YummyBerry 2016</p>
       </footer>
     </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
         <script src="/myapp/theme/bootstrap/js/vendor/bootstrap.min.js"></script>
 <script src="/myapp/theme/bootstrap/js/vendor/bootstrap-toolkit.js"></script>
         <script src="/myapp/theme/bootstrap/js/main.js"></script>
-
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

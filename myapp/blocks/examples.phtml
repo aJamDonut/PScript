@@ -1,0 +1,50 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron ">
+    	<div class="center-block">
+        <h2>Let's take a look...</h2>
+        </p>
+        
+    </div>
+   </div>
+   <div class="container">
+<h3>Load a block serverside</h3>
+<p>A 'block' is a piece of PHP or HTML which can be called in to code anywhere.</p>
+<pre class="prettyprint lang-js linenums">
+<?php echo htmlentities("
+/* Load any piece of code from anywhere in your pages */
+
+<div class='page-content' id='page-content'>
+ <div class='main-container' id='main'>
+  <?php \$Blocks->get('menu', \$MyPhp); ?>   
+ </div>
+ 
+</div>
+
+/* Load that same piece of code with ajax after an event */
+
+<button data-do='menu' data-target='#main'>Menu</button>
+
+"); ?>
+</pre>
+
+<h3>Load a block click side on click</h3>
+<p>A 'block' is a piece of PHP or HTML which can be called in to code anywhere.</p>
+<pre class="prettyprint lang-js linenums">
+<?php echo htmlentities("
+
+/* Load that same piece of code with ajax after an event */
+
+<button data-do='menu' data-target='#main'>Menu</button>
+
+"); ?>
+</pre>
+
+<p>More coming soon...</p>
+
+<script type="text/javascript">
+	PR.prettyPrint()
+	
+</script>
+      </div>
+    </div>
+    

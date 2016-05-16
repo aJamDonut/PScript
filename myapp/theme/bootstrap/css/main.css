@@ -5,9 +5,61 @@
    ========================================================================== */
 
 
+/*
+darkhard: DB4315
+dark 3F3F3F
+darklight 9875BA
+light EDEAD0
+lighthard FFCF56
+*/
 
+footer {
+ margin-top: 50px;
+ background-color: #3F3F3F;
+ padding: 25px;
+ margin-bottom: 0;
+}
 
+body {
+ background-color: #9875BA;    
+ color: white;
+ font-family: Lato !Important;
+}
 
+a {
+ cursor: pointer;   
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: 800p;
+    font-size: 20px;
+}
+.navbar-inverse {
+    background: none;
+     background-color: #3F3F3F !important;
+}
+.prettyprint {
+    text-align: left;
+}
+li.L0, li.L1, li.L2, li.L3,
+li.L5, li.L6, li.L7, li.L8
+{ list-style-type: decimal !important }
+.jumbotron {
+ background-color: #3F3F3F !important; 
+ color: white;
+ text-align: center;  
+}
+.jumbotron img {
+ padding-top: 50px;  
+}
+
+.jumbotron h1 {
+    margin-bottom: 20px;
+}
+.jumbotron {
+    padding: 100px;
+}
 #loader {
     
     position: absolute;

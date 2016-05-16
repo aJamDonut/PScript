@@ -9,7 +9,7 @@ window.onpopstate = function(event) {
          PScript.UI.attachListeners();
          PScript.actions.do($('#autoload'), false);
      };
-var __PSDO = 'menu';
+var __PSDO = 'get_yummy';
 var __PSTARGET = '#main';
 var __PSLOADING = false;
 function PSCRIPT_PUSH(o,n,e) {

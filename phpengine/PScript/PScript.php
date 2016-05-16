@@ -24,6 +24,13 @@ final class PScript {
 			
 			$URI = explode("/",$_SERVER['REQUEST_URI']);
 			
+			if(strpos($_SERVER['REQUEST_URI'], ".png")) {
+				header('Content-Type: text/png');
+			echo file_get_contents(PSCRIPT_ROOT . $_SERVER['REQUEST_URI']);
+				
+			exit;
+		}
+			
 		if(strpos($_SERVER['REQUEST_URI'], ".js") || strpos($_SERVER['REQUEST_URI'], ".css")) {
 			header('Content-Type: text/css');
 			$url = $_SERVER['REQUEST_URI'];
@@ -99,7 +106,7 @@ EOT;
 				
 			}
 			ob_start();
-			$page='about_us';
+			$page='get_yummy';
 			if($URI[0]!=="" && $URI[1] =="") {
 					$page = $URI[1];
 			}
