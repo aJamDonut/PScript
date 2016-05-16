@@ -58,7 +58,12 @@ li.L5, li.L6, li.L7, li.L8
     margin-bottom: 20px;
 }
 .jumbotron {
-    padding: 100px;
+    padding: 20px;
+}
+.jumbotron .prettyprint {
+ max-width: 500px;   
+ margin-left: auto;
+ margin-right: auto;
 }
 #loader {
     
