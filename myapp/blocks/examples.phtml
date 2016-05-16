@@ -9,8 +9,10 @@
    <div class="container">
 <h3>Load a block serverside</h3>
 <p>A 'block' is a piece of PHP or HTML which can be called in to code anywhere.</p>
-<pre class="prettyprint lang-js linenums">
-<?php echo htmlentities("
+
+<?php
+$data = array();
+$data['source_sample'] = "
 /* Load any piece of code from anywhere in your pages */
 
 <div class='page-content' id='page-content'>
@@ -20,31 +22,29 @@
  
 </div>
 
-/* Load that same piece of code with ajax after an event */
-
-<button data-do='menu' data-target='#main'>Menu</button>
-
-"); ?>
-</pre>
+";
+$Blocks->data($data);
+$Blocks->get('code_sample');
+?>
 
 <h3>Load a block click side on click</h3>
 <p>A 'block' is a piece of PHP or HTML which can be called in to code anywhere.</p>
-<pre class="prettyprint lang-js linenums">
-<?php echo htmlentities("
+<?php
+$data = array();
+$data['source_sample'] = "
 
 /* Load that same piece of code with ajax after an event */
 
 <button data-do='menu' data-target='#main'>Menu</button>
 
-"); ?>
-</pre>
+";
+$Blocks->data($data);
+$Blocks->get('code_sample');
+?>
 
 <p>More coming soon...</p>
 
-<script type="text/javascript">
-	PR.prettyPrint()
-	
-</script>
+
       </div>
     </div>
     
