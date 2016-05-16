@@ -97,9 +97,10 @@ EOT;
 			}
 			ob_start();
 			$page='menu';
-			if($URI[1]!=="/") {
+			if($URI[0]!=="" && $URI[1] =="") {
 					$page = $URI[1];
 			}
+		
 			$file = "index";
 			require("myapp/pages/{$file}.phtml");
 			$output = ob_get_contents();
