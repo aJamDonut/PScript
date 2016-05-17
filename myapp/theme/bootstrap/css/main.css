@@ -111,7 +111,38 @@ li.L5, li.L6, li.L7, li.L8
 .highlighter2 {
         background-color: #605B56 !important;
 }
+.prettydirectory {
+    background-color: white;
+    color: black;
+    width: 100%;
+    padding: 0;
+}
 
+.row-folder {
+ background-color: lightblue;
+ width: 100%;
+ display: block;
+ margin: 0;
+ 
+}
+
+.row-file {
+    
+    display: block;
+    margin: 0;
+}
+
+.row-folder i {
+    color: darkgray;
+}
+
+.row-folder .fa-folder {
+    color: #0091FF;
+}
+
+.row-file.a{
+    background-color: #eee !important;
+}
 
 /* Extra Small Devices, Phones */ 
     @media only screen and (max-width : 480px) {

@@ -1,0 +1,97 @@
+<?php
+
+$dirs = array();
+
+$dirs['/'] = array(
+				'index.html',
+					
+						'top'=>
+									array("file.php",
+										"in"=>
+										array("file.php","file2.php")
+										
+									)
+								,
+							'top2'=>
+									array("file.php",
+										"in"=>
+										array("file.php","file2.php")
+										
+									)
+
+);
+
+unset($dirs);
+
+function genDirs($dir, $level, $maxLevel=4) {
+	$dire = scandir($dir);
+
+	$folders=array();
+	$files=array();
+	foreach($dire as $f) {
+		if($f!="." && $f!="..") {
+		if(strpos($f, ".")===false) {
+			if($level<=$maxLevel) {
+				$level++;
+				$folders[$f] = genDirs($dir."/".$f, $level);
+			} else {
+				$folders[$f] = array();
+			}
+		} else {
+if(strpos(".DS_Store",$f)===false) {
+			$files[]= $f;
+}
+		}
+		}
+
+	}
+
+	return array_merge($folders, $files);
+}
+$dirs = genDirs('/Users/Adam/Sites/PScript/');
+var_dump($dirs);
+?>
+<?php
+function traverseArrayAsDir($root, $dirs, $in=0) {
+	?>
+<?php foreach($dirs as $file=>$c): $odd=0;$dir=$file?>
+	
+				<?php
+				if(strpos("/", $file)!==false) {
+					continue;
+				}
+				if(is_array($c)) {
+				?>
+				<span class='row-folder' style='padding-left: <?php echo ($in*10)+20?>px'>
+			<?php  echo "<i class='fa fa-caret-down'></i>&nbsp;<i class='fa fa-folder'></i> ".$dir."<br />"; ?></span>
+			
+				<?php
+				traverseArrayAsDir($file,$c, $in+1);
+				?>
+				
+				<?php
+				} else {
+					
+					?>
+					
+					
+					<span style='padding-left: <?php echo ($in*20)+40?>px' class='row-file  <?php echo ($odd % 2) ? '' : 'a'; ?>'><?php echo "<i class='fa fa-file-code-o'></i> ".$c. "<br />"; ?></span>
+			
+			<?php 	} ?>
+	
+<?php endforeach; ?>
+
+<?php
+}
+?>
+
+ <div class="code-sample">
+        	<div class="sample-title"><i class="fa fa-circle"></i>&nbsp;<i class="fa fa-circle"></i>&nbsp;<i class="fa fa-circle"></i></div>
+
+<div class="container prettydirectory">
+<?php
+traverseArrayAsDir('/', $dirs);
+?>
+</div>
+</div>
+List:
