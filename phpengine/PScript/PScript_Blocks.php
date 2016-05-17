@@ -17,6 +17,7 @@ class PScript_Blocks {
 	}
 	
 	function plugin($plugin, $block, $MyPhp=false) {
+		$Blocks = $this;
 		require("plugins/{$plugin}/blocks/{$block}.phtml");
 		
 	}

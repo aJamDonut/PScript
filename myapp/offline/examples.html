@@ -1,0 +1,180 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron ">
+    	<div class="center-block">
+        <h2>Let's take a look...</h2>
+        </p>
+        
+    </div>
+   </div>
+   <div class="container">
+<h3 class='page-header'>Load a block serverside</h3>
+<p>A 'block' is a piece of PHP or HTML which can be called in to code anywhere.</p>
+
+ <div class="code-sample">
+        	<div class="sample-title"><i class="fa fa-circle"></i>&nbsp;<i class="fa fa-circle"></i>&nbsp;<i class="fa fa-circle"></i></div>
+
+<pre class="prettyprint lang-js linenums">
+
+/* Load any piece of code from anywhere in your pages */
+
+&lt;div class='page-content' id='page-content'&gt;
+ &lt;div class='main-container' id='main'&gt;
+  &lt;?php $Blocks-&gt;get('menu', $MyPhp); ?&gt;   
+ &lt;/div&gt;
+ 
+&lt;/div&gt;
+
+</pre>
+</div>
+<script type="text/javascript">
+	PR.prettyPrint()
+	
+</script>
+<h3 class='page-header'>Load a block click side on click</h3>
+<p>A 'block' is a piece of PHP or HTML which can be called in to code anywhere.</p>
+ <div class="code-sample">
+        	<div class="sample-title"><i class="fa fa-circle"></i>&nbsp;<i class="fa fa-circle"></i>&nbsp;<i class="fa fa-circle"></i></div>
+
+<pre class="prettyprint lang-js linenums">
+
+
+/* Load that same piece of code with ajax after an event */
+
+&lt;button data-do='menu' data-target='#main'&gt;Menu&lt;/button&gt;
+
+</pre>
+</div>
+<script type="text/javascript">
+	PR.prettyPrint()
+	
+</script>
+<h3 class='page-header'>Sample structure</h3>
+
+
+ <div class="code-sample">
+        	<div class="sample-title"><i class="fa fa-circle"></i>&nbsp;<i class="fa fa-circle"></i>&nbsp;<i class="fa fa-circle"></i></div>
+        	<div class="">
+        		<div class="media-left container" style='border-right: 1px solid #ccc; background-color: white;color:gray;min-width: 200px;'>Your site can be organised in just a couple of folders which glue everything together for re-usability</div>
+
+<div class="media-right container prettydirectory">
+	
+								<span class='row-folder' style='padding-left: 20px'>
+			<i class='fa fa-caret-down'></i>&nbsp;<i class='fa fa-folder'></i> myapp<br /></span>
+			
+					
+									
+					
+					<span style='padding-left: 47.5px' class='row-file  a'><i class='fa fa-file-code-o'></i> config.php (Your apps settings)<br /></span>
+			
+				
+	
+								<span class='row-folder' style='padding-left: 35px'>
+			<i class='fa fa-caret-down'></i>&nbsp;<i class='fa fa-folder'></i> blocks<br /></span>
+			
+					
+									
+					
+					<span style='padding-left: 55px' class='row-file  a'><i class='fa fa-file-code-o'></i> login.phtml<br /></span>
+			
+				
+	
+									
+					
+					<span style='padding-left: 55px' class='row-file  a'><i class='fa fa-file-code-o'></i> register.phtml<br /></span>
+			
+				
+	
+									
+					
+					<span style='padding-left: 55px' class='row-file  a'><i class='fa fa-file-code-o'></i> menu.phtml<br /></span>
+			
+				
+
+				
+					
+	
+								<span class='row-folder' style='padding-left: 35px'>
+			<i class='fa fa-caret-down'></i>&nbsp;<i class='fa fa-folder'></i> pages<br /></span>
+			
+					
+									
+					
+					<span style='padding-left: 55px' class='row-file  a'><i class='fa fa-file-code-o'></i> home.phtml<br /></span>
+			
+				
+	
+									
+					
+					<span style='padding-left: 55px' class='row-file  a'><i class='fa fa-file-code-o'></i> admin.phtml<br /></span>
+			
+				
+
+				
+					
+	
+								<span class='row-folder' style='padding-left: 35px'>
+			<i class='fa fa-caret-down'></i>&nbsp;<i class='fa fa-folder'></i> php<br /></span>
+			
+					
+									
+					
+					<span style='padding-left: 55px' class='row-file  a'><i class='fa fa-file-code-o'></i> customers.php<br /></span>
+			
+				
+	
+									
+					
+					<span style='padding-left: 55px' class='row-file  a'><i class='fa fa-file-code-o'></i> leads.php<br /></span>
+			
+				
+
+				
+					
+	
+								<span class='row-folder' style='padding-left: 35px'>
+			<i class='fa fa-caret-down'></i>&nbsp;<i class='fa fa-folder'></i> theme<br /></span>
+			
+					
+									
+					
+					<span style='padding-left: 55px' class='row-file  a'><i class='fa fa-file-code-o'></i> master.phtml<br /></span>
+			
+				
+	
+								<span class='row-folder' style='padding-left: 50px'>
+			<i class='fa fa-caret-down'></i>&nbsp;<i class='fa fa-folder'></i> css<br /></span>
+			
+					
+									
+					
+					<span style='padding-left: 62.5px' class='row-file  a'><i class='fa fa-file-code-o'></i> styles.css<br /></span>
+			
+				
+
+				
+					
+	
+								<span class='row-folder' style='padding-left: 50px'>
+			<i class='fa fa-caret-down'></i>&nbsp;<i class='fa fa-folder'></i> img<br /></span>
+			
+					
+									
+					
+					<span style='padding-left: 62.5px' class='row-file  a'><i class='fa fa-file-code-o'></i> logo.png<br /></span>
+			
+				
+
+				
+					
+
+				
+					
+
+				
+					
+
+</div>
+</div>
+</div>
+
+<br />

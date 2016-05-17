@@ -53,7 +53,8 @@ EOT;
 			exit;
 		}
 		
-		if(strpos($_SERVER['REQUEST_URI'], ".html")) {
+		if(strpos($_SERVER['REQUEST_URI'], ".")) {
+			header('Content-Type: text/plain');
 			echo file_get_contents(PSCRIPT_ROOT . $_SERVER['REQUEST_URI']);
 			exit;
 		}

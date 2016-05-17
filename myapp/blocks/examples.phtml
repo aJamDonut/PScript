@@ -7,7 +7,7 @@
     </div>
    </div>
    <div class="container">
-<h3>Load a block serverside</h3>
+<h3 class='page-header'>Load a block serverside</h3>
 <p>A 'block' is a piece of PHP or HTML which can be called in to code anywhere.</p>
 
 <?php
@@ -27,7 +27,7 @@ $Blocks->data($data);
 $Blocks->get('code_sample');
 ?>
 
-<h3>Load a block click side on click</h3>
+<h3 class='page-header'>Load a block click side on click</h3>
 <p>A 'block' is a piece of PHP or HTML which can be called in to code anywhere.</p>
 <?php
 $data = array();
@@ -42,9 +42,20 @@ $Blocks->data($data);
 $Blocks->get('code_sample');
 ?>
 
-<p>More coming soon...</p>
+<h3 class='page-header'>Sample structure</h3>
 
+<?php
+$dirs['myapp'] = array(
+"config.php (Your apps settings)",
+"blocks"=>array("login.phtml", "register.phtml", "menu.phtml"),
+"pages"=>array("home.phtml", "admin.phtml"),
+"php"=>array("customers.php", "leads.php"),
+"theme"=>array("master.phtml", "css"=>array("styles.css"), "img"=>array("logo.png"))
+);
+$Blocks->data(array("util_dirs"=>$dirs));
+$desc = "Your site can be organised in just a couple of folders which glue everything together for re-usability";
+$Blocks->data(array("util_dirs_desc"=>$desc));
+?>
+<?php $Blocks -> plugin('utilities', 'directory_list', $MyPhp); ?>
 
-      </div>
-    </div>
-    
+<br />

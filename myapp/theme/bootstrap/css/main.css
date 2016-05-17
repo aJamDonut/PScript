@@ -14,7 +14,6 @@ lighthard FFCF56
 */
 
 footer {
- margin-top: 50px;
  background-color: #3F3F3F;
  padding: 25px;
  margin-bottom: 0;
@@ -143,6 +142,22 @@ li.L5, li.L6, li.L7, li.L8
 .row-file.a{
     background-color: #eee !important;
 }
+
+.google-visualization-orgchart-table {
+  
+}
+.google-visualization-orgchart-node.google-visualization-orgchart-node-medium{
+ background: none;
+ background-color: #9875BA;
+ border-radius: 0;
+ border: 1px solid #848484;   
+ box-shadow: none;
+}
+
+table{
+    border-collapse: separate;
+}
+
 
 /* Extra Small Devices, Phones */ 
     @media only screen and (max-width : 480px) {

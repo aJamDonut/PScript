@@ -1,0 +1,64 @@
+<?php
+$Util = $MyPhp -> plugin('utilities');
+
+if (@$Blocks -> data['util_dir']) {
+
+	$dirs = $Util -> dirToArray(PSCRIPT_ROOT);
+
+} elseif (@$Blocks -> data['util_dirs']) {
+	$dirs = $Blocks -> data['util_dirs'];
+} else {
+	$dirs = array();
+	$dirs['public_html'] = array('index.html', 'top' => array("file.php", "in" => array("file.php", "file2.php")), 'top2' => array("file.php", "in" => array("file.php", "file2.php")));
+}
+?>
+<?php
+function traverseArrayAsDir($root, $dirs, $in=0) {
+	?>
+<?php foreach($dirs as $file=>$c): $odd=0;$dir=$file?>
+	
+				<?php
+				if(strpos("/", $file)!==false) {
+					continue;
+				}
+				if(is_array($c)) {
+				?>
+				<span class='row-folder' style='padding-left: <?php echo ($in*15)+20?>px'>
+			<?php  echo "<i class='fa fa-caret-down'></i>&nbsp;<i class='fa fa-folder'></i> " . $dir . "<br />"; ?></span>
+			
+				<?php
+				traverseArrayAsDir($file, $c, $in + 1);
+				?>
+				
+				<?php
+				} else {
+					?>
+					
+					
+					<span style='padding-left: <?php echo ($in*7.5)+40?>px' class='row-file  <?php echo($odd % 2) ? '' : 'a'; ?>'><?php echo "<i class='fa fa-file-code-o'></i> " . $c . "<br />"; ?></span>
+			
+			<?php 	} ?>
+	
+<?php endforeach; ?>
+
+<?php
+}
+?>
+
+ <div class="code-sample">
+        	<div class="sample-title"><i class="fa fa-circle"></i>&nbsp;<i class="fa fa-circle"></i>&nbsp;<i class="fa fa-circle"></i></div>
+        	<div class="">
+        		<?php if(@$Blocks->data['util_dirs_desc']): ?>
+<div class="media-left container" style='border-right: 1px solid #ccc; background-color: white;color:gray;min-width: 200px;'><?php echo $Blocks->data['util_dirs_desc']; ?></div>
+
+<?php else: ?>
+	<div class="media-left" style='border-right: 1px solid #ccc; background-color: white;color:gray;width: 1px;padding:0'></div>
+
+<?php endif; ?>
+<div class="media-right container prettydirectory">
+<?php
+traverseArrayAsDir('/', $dirs);
+?>
+</div>
+</div>
+</div>

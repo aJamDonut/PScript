@@ -1,2 +1,3 @@
 RewriteEngine On
+RewriteCond %{REQUEST_URI} !^.*\.(jpg|gif|png)$ [NC]
 RewriteRule ^/?(.*)$ index.php [L]

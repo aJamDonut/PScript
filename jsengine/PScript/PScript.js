@@ -1,3 +1,24 @@
+function addJS(jsCode) {
+    var s = document.createElement('script');
+
+    s.type = 'text/javascript';
+    s.innerText = jsCode;
+    document.getElementsByTagName('head')[0].appendChild(s);
+}
+
+loadedUrls = [];
+
+function addJSURL(jsCode) {
+    if(loadedUrls.indexOf(jsCode)==-1) {
+    var s = document.createElement('script');
+
+    s.type = 'text/javascript';
+    s.src = jsCode;
+    document.getElementsByTagName('head')[0].appendChild(s);
+    loadedUrls.push(jsCode);
+    }
+}
+
 window.onpopstate = function(event) {
          console.debug("pop");
          data = event.state;
