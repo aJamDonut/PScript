@@ -131,6 +131,10 @@ PScript.actions = {
     do : function(elem, record, loader) {
         elem = self.jQuery(elem);
         
+        if(elem.data('target')!=="#main") {
+            record=false;
+        }
+        
         if(elem[0].hasAttribute("data-transition")) {
         } else {
             elem.data('transition','slide'); 

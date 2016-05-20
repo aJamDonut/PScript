@@ -1,4 +1,7 @@
 <?php
+
+var_dump($MyPhp);
+
 $Util = $MyPhp -> plugin('utilities');
 
 if (@$Blocks -> data['util_dir']) {
@@ -13,7 +16,8 @@ if (@$Blocks -> data['util_dir']) {
 }
 ?>
 <?php
-function traverseArrayAsDir($root, $dirs, $in=0) {
+if(!function_exists('Util_traverseArrayAsDir')) {
+function Util_traverseArrayAsDir($root, $dirs, $in=0) {
 	?>
 <?php foreach($dirs as $file=>$c): $odd=0;$dir=$file?>
 	
@@ -27,7 +31,7 @@ function traverseArrayAsDir($root, $dirs, $in=0) {
 			<?php  echo "<i class='fa fa-caret-down'></i>&nbsp;<i class='fa fa-folder'></i> " . $dir . "<br />"; ?></span>
 			
 				<?php
-				traverseArrayAsDir($file, $c, $in + 1);
+				Util_traverseArrayAsDir($file, $c, $in + 1);
 				?>
 				
 				<?php
@@ -43,6 +47,7 @@ function traverseArrayAsDir($root, $dirs, $in=0) {
 
 <?php
 }
+}
 ?>
 
  <div class="code-sample">
@@ -57,7 +62,7 @@ function traverseArrayAsDir($root, $dirs, $in=0) {
 <?php endif; ?>
 <div class="media-right container prettydirectory">
 <?php
-traverseArrayAsDir('/', $dirs);
+Util_traverseArrayAsDir('/', $dirs);
 ?>
 </div>
 </div>

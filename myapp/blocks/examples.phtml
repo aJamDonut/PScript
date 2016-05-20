@@ -59,3 +59,18 @@ $Blocks->data(array("util_dirs_desc"=>$desc));
 <?php $Blocks -> plugin('utilities', 'directory_list', $MyPhp); ?>
 
 <br />
+<?php
+$dirs['myapp'] = array(
+"config.php (Your apps settings)"
+);
+$Blocks->data(array("util_dirs"=>$dirs));
+$desc = "Your site can be organised in just a couple of folders which glue everything together for re-usability";
+$Blocks->data(array("util_dirs_desc"=>$desc));
+?>
+<?php $Blocks -> plugin('utilities', 'directory_list', $MyPhp); ?>
+
+<!-- -->
+-
+<?php $Blocks->get('getting_started') ?>
+-
+<br /><br />
