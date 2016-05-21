@@ -1,7 +1,8 @@
+#YummyBerry CI
 language: php
-php:
-  - 5.4
-  - 5.5
-  - 5.6
- script:
-  - phpunit --configuration phpunit.xml --verbose
+php: 
+ - 5.4
+ - 5.5
+ - 5.6
+script:
+ - phpunit --configuration phpunit.xml --verbose
