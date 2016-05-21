@@ -1,0 +1,14 @@
+{
+    "name": "adam/p-script",
+    "require": {
+        "components/jquery": "^2.2",
+        "bainternet/php-hooks": "^1.0",
+        "components/modernizr": "^2.8"
+    },
+    "authors": [
+        {
+            "name": "Adam D",
+            "email": "adamd@elementarydigital.co.uk"
+        }
+    ]
+}

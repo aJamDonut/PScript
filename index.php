@@ -77,6 +77,8 @@ if(!file_exists($engineFile)) {
 
 require_once($engineFile);
 
+require_once(PSCRIPT_ROOT. FS. 'vendor/autoload.php');
+
 PScript::init();
 
 ?>

@@ -62,7 +62,7 @@ EOT;
 
 		self::loadClass('Blocks');
 		
-		self::loadPackage('PHPHooks');
+		//self::loadPackage('PHPHooks');
 				//Load plugins
 		global $hooks;
 		
@@ -102,10 +102,11 @@ EOT;
 			$PScript_Theme->setTheme($PScript->theme);
 			foreach($defaultJs as $namespace=>$js) {
 				$PScript_Theme->addToHead("<script type='text/javascript' src='/" . PSCRIPT_JS_ENGINE . FS. $namespace . FS . $js . "'></script>");
-				
-				
-				
 			}
+
+			$PScript_Theme->addToHead("<script type='text/javascript' src='/vendor/components/jquery/jquery.js'></script>");
+			$PScript_Theme->addToHead("<script type='text/javascript' src='/vendor/components/modernizr/modernizr.js'></script>");
+
 			ob_start();
 			$page='get_yummy';
 			if($URI[0]!=="" && $URI[1] =="") {
