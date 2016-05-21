@@ -10,6 +10,9 @@ Visit the YummyBerry site at [yummy.jamdonut.com](http://yummy.jamdonut.com)
 
 ## Developer Info
 
+### Dependencies
+Dependencies and packages are maintained with Composer
+
 ### Testing
 Tests are completed in PHPUnit
 
