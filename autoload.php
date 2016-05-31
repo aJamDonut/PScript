@@ -11,3 +11,5 @@ function __autoload($class_name)
     require_once $file;
 }
 spl_autoload_register('__autoload');
+require_once('shortnames.php');
+require_once('vendor/autoload.php');

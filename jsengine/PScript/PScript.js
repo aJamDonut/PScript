@@ -7,7 +7,7 @@ function addJS(jsCode) {
 }
 
 loadedUrls = [];
-
+var requestUrl = "";
 function addJSURL(jsCode) {
     if(loadedUrls.indexOf(jsCode)==-1) {
     var s = document.createElement('script');
@@ -185,7 +185,7 @@ PScript.actions = {
         });
         }, PScript.delay);
     },
-    post : function(elem) {
+    post : function(elem, record) {
         elem = self.jQuery(elem);
         
         if(elem[0].hasAttribute("data-transition")) {
@@ -204,14 +204,23 @@ PScript.actions = {
             requestUrl = "http://" + remoteURI + '/' + PScript.outputFolder + '/' + self.jQuery(elem).data('post') + PScript.ext;
         }
         
+        console.debug({url : __PSDO, target : __PSTARGET});
+        
+        if(record===undefined) {
+            PSCRIPT_PUSH({url : __PSDO, target : __PSTARGET}, null, '/'+elem.data('post'));
+        }
+        __PSDO = elem.data('do');
+        __PSTARGET = elem.data('target');
+        
         console.debug(requestUrl);
         setTimeout(function() {
             
-            
+            console.debug(requestUrl);
         self.jQuery.post({
             url : requestUrl,
             data: postData,
             success : function(html) {
+                console.debug("got");
                 if(elem.data('target')=='html') {   
                     var newDoc = document.open("text/html", "replace");
                     newDoc.write(html);
@@ -223,6 +232,8 @@ PScript.actions = {
                 PScript.UI.attachListeners();
                 PScript.endTransition(elem, function(){});
             }
+        }).always(function() {
+            console.debug("did"+requestUrl);
         });
         }, PScript.delay);
     }

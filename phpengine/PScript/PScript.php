@@ -13,10 +13,24 @@
 
 final class PScript {
 	private $theme = false;
+/**
+ * @codeCoverageIgnore
+ */
+	public static function setHead($head, $duff=false) {
+		if($duff==false && php_sapi_name() !=="cli") {
+			header($head);
+			return 1;
+		} else {
+			return 1;
+		}
+	}
 	
-	//Start PScript
+/**
+ * @codeCoverageIgnore
+ */
 	public static function init() {
-		header('Access-Control-Allow-Origin: *'); 
+		
+		PScript::setHead('Access-Control-Allow-Origin: *'); 
 		global $_CONFIG;
 			//Handle non-php files
 			
@@ -25,14 +39,20 @@ final class PScript {
 			$URI = explode("/",$_SERVER['REQUEST_URI']);
 			
 			if(strpos($_SERVER['REQUEST_URI'], ".png")) {
-				header('Content-Type: text/png');
+				PScript::setHead('Content-Type: text/png');
 			echo file_get_contents(PSCRIPT_ROOT . $_SERVER['REQUEST_URI']);
+				
+			exit;
+		}
+			if(strpos($_SERVER['REQUEST_URI'], ".php")) {
+				PScript::setHead('Content-Type: text/html');
+			echo include_once(PSCRIPT_ROOT . $_SERVER['REQUEST_URI']);
 				
 			exit;
 		}
 			
 		if(strpos($_SERVER['REQUEST_URI'], ".js") || strpos($_SERVER['REQUEST_URI'], ".css")) {
-			header('Content-Type: text/css');
+			PScript::setHead('Content-Type: text/css');
 			$url = $_SERVER['REQUEST_URI'];
 			if(strpos($url, "?")) {
 				$url = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '?'));
@@ -53,8 +73,14 @@ EOT;
 			exit;
 		}
 		
+				if(strpos($_SERVER['REQUEST_URI'], ".html")) {
+			PScript::setHead('Content-Type: text/html');
+			echo file_get_contents(PSCRIPT_ROOT . $_SERVER['REQUEST_URI']);
+			exit;
+		}
+		
 		if(strpos($_SERVER['REQUEST_URI'], ".")) {
-			header('Content-Type: text/plain');
+			PScript::setHead('Content-Type: text/plain');
 			echo file_get_contents(PSCRIPT_ROOT . $_SERVER['REQUEST_URI']);
 			exit;
 		}
@@ -95,17 +121,18 @@ EOT;
 			//Default JS for PScript
 			$defaultJs = array();
 			//Namespace = Filename
-			$defaultJs['jQuery'] = "jquery.js";
+
 			$defaultJs['PScript'] = "PScript.js";
 			$PScript_Theme = new PScript_Theme();
 			
 			$PScript_Theme->setTheme($PScript->theme);
+			$PScript_Theme->addToHead("<script type='text/javascript' src='/vendor/components/jquery/jquery.js'></script>");
+			$PScript_Theme->addToHead("<script type='text/javascript' src='/vendor/components/modernizr/modernizr.js'></script>");
 			foreach($defaultJs as $namespace=>$js) {
 				$PScript_Theme->addToHead("<script type='text/javascript' src='/" . PSCRIPT_JS_ENGINE . FS. $namespace . FS . $js . "'></script>");
 			}
 
-			$PScript_Theme->addToHead("<script type='text/javascript' src='/vendor/components/jquery/jquery.js'></script>");
-			$PScript_Theme->addToHead("<script type='text/javascript' src='/vendor/components/modernizr/modernizr.js'></script>");
+			
 
 			ob_start();
 			$page='get_yummy';
@@ -173,7 +200,7 @@ EOT;
 				echo $output;
 				file_put_contents("myapp/offline/{$file}.html", $output);
 			}
-		}	
+		}
 	}
 
 	public function myPhp($name) {
@@ -189,11 +216,7 @@ EOT;
 	private static function loadClass($class) {
 		require_once(PSCRIPT_PHP_ENGINE . FS . PSCRIPT_NS. FS . PSCRIPT_NS . '_' . $class . ".php");
 	}
-	
-	private static function loadPackage($class) {
-		require_once(PSCRIPT_PHP_ENGINE . FS . $class. FS . $class . ".php");
-	}
-	
+
 }
 
 ?>
